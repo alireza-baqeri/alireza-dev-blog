@@ -1,27 +1,28 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Next.js Starter Blog',
-  author: 'Tails Azimuth',
-  headerTitle: 'TailwindBlog',
-  description: 'A blog created with Next.js and Tailwind.css',
+  title: 'Alireza Bagheri | Tech Blog',
+  author: 'Alireza Bagheri',
+  headerTitle: 'Alireza Bagheri',
+  description:
+    'A personal blog by Alireza Bagheri covering Front-End development, Next.js, AI research, and software engineering.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
+  siteUrl: 'https://alireza-dev-blog.vercel.app',
+  siteRepo: 'https://github.com/alireza-baqeri/alireza-dev-blog',
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo-transparent.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
-  mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
-  x: 'https://twitter.com/x',
+  mastodon: '',
+  email: 'alirezwbgh@gmail.com',
+  github: 'https://github.com/alireza-baqeri',
+  x: 'https://x.com/alirezabgh13',
   // twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
-  threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com',
-  medium: 'https://medium.com',
-  bluesky: 'https://bsky.app/',
+  facebook: '',
+  youtube: '',
+  linkedin: 'https://www.linkedin.com/in/alireza-bagheri-a585b0239/',
+  threads: '',
+  instagram: '',
+  medium: 'https://medium.com/@alirzabgh',
+  bluesky: '',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
@@ -45,9 +46,9 @@ const siteMetadata = {
     // posthogAnalytics: {
     //   posthogProjectApiKey: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
     // },
-    // googleAnalytics: {
-    //   googleAnalyticsId: '', // e.g. G-XXXXXXX
-    // },
+    googleAnalytics: {
+      googleAnalyticsId: 'G-K8KTEF27S0', // e.g. G-XXXXXXX
+    },
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus, beehive
