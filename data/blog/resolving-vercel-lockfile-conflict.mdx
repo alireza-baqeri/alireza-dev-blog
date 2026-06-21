@@ -1,0 +1,49 @@
+---
+title: 'Resolving the "yarn install exited with 1" Error on Vercel'
+date: '2026-06-21'
+tags: ['Next.js', 'Vercel', 'CI/CD', 'Debugging']
+draft: false
+summary: 'A quick guide on solving the classic lockfile conflict when deploying Next.js applications on Vercel.'
+---
+
+When you start working with modern deployment platforms like Vercel, encountering build errors is almost a daily routine. One of the most common, yet easily fixable errors you might face when deploying a forked Next.js template is the dreaded "lockfile conflict".
+
+Today, while setting up my personal digital garden and portfolio, I ran into a build failure right out of the gate.
+
+## The Error
+
+After customizing a Next.js template locally and pushing the changes to GitHub, Vercel's build process failed at the dependency installation step. The build log threw this specific error:
+
+```bash
+Error: Command "yarn install" exited with 1
+
+Locally, everything was working perfectly. The UI was rendering, and the terminal showed zero errors. So, what happened in the CI/CD pipeline?
+
+The Root Cause: The Battle of Lockfiles
+The template I originally used was built and initialized using yarn. Therefore, it contained a yarn.lock file in its root directory.
+
+However, during my local setup and package updates, I instinctively used npm install. This command generated a new package-lock.json file. When I pushed my code to GitHub, my repository ended up having both lockfiles.
+
+When Vercel detects a repository, it tries to be smart about choosing the right package manager. Since it saw yarn.lock, it triggered the yarn install command. But the presence of package-lock.json created a dependency resolution conflict, causing the process to crash immediately.
+
+The 60-Second Fix
+To resolve this issue, you simply need to tell Vercel exactly which package manager is the source of truth.
+
+Open your project in your code editor.
+
+Locate the yarn.lock file in the root directory and delete it.
+
+Ensure your package-lock.json remains intact (since we want to use npm).
+
+Commit the changes and push them back to your repository:
+
+Bash
+git add package.json package-lock.json
+git commit -m "fix: removed yarn.lock to resolve deployment conflict"
+git push
+The Result
+As soon as the new commit hit the main branch, Vercel automatically triggered a new deployment. This time, realizing that yarn.lock was missing, it successfully defaulted to npm install. The packages were resolved, the Next.js app was built, and the deployment went live in under a minute.
+
+Key Takeaway
+When working with JavaScript environments, always pick one package manager (npm, yarn, or pnpm) and stick to it. Mixing them doesn't just clutter your repository; it breaks your continuous integration pipelines.
+```
