@@ -56,6 +56,6 @@ export const data = {
     },
   ],
 }
-
+ 
 <DonutChart data={data} />
 ```
